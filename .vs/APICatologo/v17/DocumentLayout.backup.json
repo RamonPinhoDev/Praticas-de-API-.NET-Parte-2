@@ -1,0 +1,130 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Ideapad 3i\\source\\repos\\APICatologo\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{12741D29-ED0E-4971-9067-FDD6A837BD1E}|APICatologo\\APICatologo.csproj|c:\\users\\ideapad 3i\\source\\repos\\apicatologo\\apicatologo\\filter\\apiexeceptionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12741D29-ED0E-4971-9067-FDD6A837BD1E}|APICatologo\\APICatologo.csproj|solutionrelative:apicatologo\\filter\\apiexeceptionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12741D29-ED0E-4971-9067-FDD6A837BD1E}|APICatologo\\APICatologo.csproj|c:\\users\\ideapad 3i\\source\\repos\\apicatologo\\apicatologo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12741D29-ED0E-4971-9067-FDD6A837BD1E}|APICatologo\\APICatologo.csproj|solutionrelative:apicatologo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12741D29-ED0E-4971-9067-FDD6A837BD1E}|APICatologo\\APICatologo.csproj|c:\\users\\ideapad 3i\\source\\repos\\apicatologo\\apicatologo\\controllers\\categoriascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12741D29-ED0E-4971-9067-FDD6A837BD1E}|APICatologo\\APICatologo.csproj|solutionrelative:apicatologo\\controllers\\categoriascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12741D29-ED0E-4971-9067-FDD6A837BD1E}|APICatologo\\APICatologo.csproj|c:\\users\\ideapad 3i\\source\\repos\\apicatologo\\apicatologo\\logging\\custummerloggerprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12741D29-ED0E-4971-9067-FDD6A837BD1E}|APICatologo\\APICatologo.csproj|solutionrelative:apicatologo\\logging\\custummerloggerprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12741D29-ED0E-4971-9067-FDD6A837BD1E}|APICatologo\\APICatologo.csproj|c:\\users\\ideapad 3i\\source\\repos\\apicatologo\\apicatologo\\logging\\custumerlogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12741D29-ED0E-4971-9067-FDD6A837BD1E}|APICatologo\\APICatologo.csproj|solutionrelative:apicatologo\\logging\\custumerlogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12741D29-ED0E-4971-9067-FDD6A837BD1E}|APICatologo\\APICatologo.csproj|c:\\users\\ideapad 3i\\source\\repos\\apicatologo\\apicatologo\\logging\\custummerloggerproviderconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12741D29-ED0E-4971-9067-FDD6A837BD1E}|APICatologo\\APICatologo.csproj|solutionrelative:apicatologo\\logging\\custummerloggerproviderconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CategoriasController.cs",
+              "DocumentMoniker": "C:\\Users\\Ideapad 3i\\source\\repos\\APICatologo\\APICatologo\\Controllers\\CategoriasController.cs",
+              "RelativeDocumentMoniker": "APICatologo\\Controllers\\CategoriasController.cs",
+              "ToolTip": "C:\\Users\\Ideapad 3i\\source\\repos\\APICatologo\\APICatologo\\Controllers\\CategoriasController.cs",
+              "RelativeToolTip": "APICatologo\\Controllers\\CategoriasController.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAswGYAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-20T03:08:44.747Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ApiExeceptionFilter.cs",
+              "DocumentMoniker": "C:\\Users\\Ideapad 3i\\source\\repos\\APICatologo\\APICatologo\\Filter\\ApiExeceptionFilter.cs",
+              "RelativeDocumentMoniker": "APICatologo\\Filter\\ApiExeceptionFilter.cs",
+              "ToolTip": "C:\\Users\\Ideapad 3i\\source\\repos\\APICatologo\\APICatologo\\Filter\\ApiExeceptionFilter.cs",
+              "RelativeToolTip": "APICatologo\\Filter\\ApiExeceptionFilter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-20T01:57:16.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Ideapad 3i\\source\\repos\\APICatologo\\APICatologo\\Program.cs",
+              "RelativeDocumentMoniker": "APICatologo\\Program.cs",
+              "ToolTip": "C:\\Users\\Ideapad 3i\\source\\repos\\APICatologo\\APICatologo\\Program.cs",
+              "RelativeToolTip": "APICatologo\\Program.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAIAwwBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-20T01:22:22.968Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CustummerLoggerProviderConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Ideapad 3i\\source\\repos\\APICatologo\\APICatologo\\Logging\\CustummerLoggerProviderConfiguration.cs",
+              "RelativeDocumentMoniker": "APICatologo\\Logging\\CustummerLoggerProviderConfiguration.cs",
+              "ToolTip": "C:\\Users\\Ideapad 3i\\source\\repos\\APICatologo\\APICatologo\\Logging\\CustummerLoggerProviderConfiguration.cs",
+              "RelativeToolTip": "APICatologo\\Logging\\CustummerLoggerProviderConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-17T01:45:58.6Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CustummerLoggerProvider.cs",
+              "DocumentMoniker": "C:\\Users\\Ideapad 3i\\source\\repos\\APICatologo\\APICatologo\\Logging\\CustummerLoggerProvider.cs",
+              "RelativeDocumentMoniker": "APICatologo\\Logging\\CustummerLoggerProvider.cs",
+              "ToolTip": "C:\\Users\\Ideapad 3i\\source\\repos\\APICatologo\\APICatologo\\Logging\\CustummerLoggerProvider.cs",
+              "RelativeToolTip": "APICatologo\\Logging\\CustummerLoggerProvider.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAApwBMAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-17T01:09:57.779Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CustumerLogger.cs",
+              "DocumentMoniker": "C:\\Users\\Ideapad 3i\\source\\repos\\APICatologo\\APICatologo\\Logging\\CustumerLogger.cs",
+              "RelativeDocumentMoniker": "APICatologo\\Logging\\CustumerLogger.cs",
+              "ToolTip": "C:\\Users\\Ideapad 3i\\source\\repos\\APICatologo\\APICatologo\\Logging\\CustumerLogger.cs",
+              "RelativeToolTip": "APICatologo\\Logging\\CustumerLogger.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwCkAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-17T01:09:24.266Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
