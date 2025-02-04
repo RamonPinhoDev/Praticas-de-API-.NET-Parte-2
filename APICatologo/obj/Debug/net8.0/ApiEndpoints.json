@@ -9,7 +9,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[APICatologo.Models.Categoria, APICatologo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[APICatologo.DTOs.CategoriasDTO, APICatologo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -28,16 +28,26 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "categoria",
-        "Type": "APICatologo.Models.Categoria",
+        "Name": "categoriasDTO",
+        "Type": "APICatologo.DTOs.CategoriasDTO",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "APICatologo.DTOs.CategoriasDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "APICatologo.Controllers.CategoriasController",
-    "Method": "Get",
+    "Method": "Get2",
     "RelativePath": "Categorias/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -66,12 +76,22 @@
         "IsRequired": true
       },
       {
-        "Name": "categoria",
-        "Type": "APICatologo.Models.Categoria",
+        "Name": "categoriasDTO",
+        "Type": "APICatologo.DTOs.CategoriasDTO",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "APICatologo.DTOs.CategoriasDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "APICatologo.Controllers.CategoriasController",
@@ -87,106 +107,9 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APICatologo.Controllers.CategoriasController",
-    "Method": "GetComFromServices",
-    "RelativePath": "Categorias/ComFromService/{nome}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Ramon",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "nome",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
     "ReturnTypes": [
       {
-        "Type": "System.String",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "APICatologo.Controllers.CategoriasController",
-    "Method": "PegarChavesDeConfiguracoes",
-    "RelativePath": "Categorias/Configuracoes",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.String",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "APICatologo.Controllers.CategoriasController",
-    "Method": "GetCat",
-    "RelativePath": "Categorias/Produtos",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[APICatologo.Models.Categoria, APICatologo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "APICatologo.Controllers.CategoriasController",
-    "Method": "GetSemFromservices",
-    "RelativePath": "Categorias/SemfromServices/ {nome}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "meuServoco",
-        "Type": "APICatologo.Services.IMeuServoco",
-        "IsRequired": true
-      },
-      {
-        "Name": "Ramon",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "nome",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.String",
+        "Type": "APICatologo.DTOs.CategoriasDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -206,7 +129,38 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[APICatologo.Models.Produto, APICatologo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[APICatologo.DTOs.ProdutosDTO, APICatologo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "APICatologo.Controllers.ProdutosController",
+    "Method": "Patch",
+    "RelativePath": "Produtos",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "patchProdutoDTO",
+        "Type": "Microsoft.AspNetCore.JsonPatch.Operations.Operation[]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "APICatologo.DTOs.Mappins.ProdutoDTOUpdateResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -225,35 +179,124 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "produto",
-        "Type": "APICatologo.Models.Produto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APICatologo.Controllers.ProdutosController",
-    "Method": "GetAsync",
-    "RelativePath": "Produtos/{Id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "Ramon",
-        "Type": "System.String",
+        "Name": "produtoDTO",
+        "Type": "APICatologo.DTOs.ProdutosDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "APICatologo.Models.Produto",
+        "Type": "APICatologo.DTOs.ProdutosDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "APICatologo.Controllers.ProdutosController",
+    "Method": "Put",
+    "RelativePath": "Produtos/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "produtoDTO",
+        "Type": "APICatologo.DTOs.ProdutosDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "APICatologo.DTOs.ProdutosDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "APICatologo.Controllers.ProdutosController",
+    "Method": "Delete",
+    "RelativePath": "Produtos/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "APICatologo.DTOs.ProdutosDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "APICatologo.Controllers.ProdutosController",
+    "Method": "GetProdutos",
+    "RelativePath": "Produtos/GetCategorias/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[APICatologo.DTOs.ProdutosDTO, APICatologo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "produtosId"
+  },
+  {
+    "ContainingType": "APICatologo.Controllers.ProdutosController",
+    "Method": "GetById",
+    "RelativePath": "Produtos/GetProduto/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "APICatologo.DTOs.ProdutosDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -263,68 +306,5 @@
       }
     ],
     "EndpointName": "ObterProduto"
-  },
-  {
-    "ContainingType": "APICatologo.Controllers.ProdutosController",
-    "Method": "Put",
-    "RelativePath": "Produtos/{Id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "produto",
-        "Type": "APICatologo.Models.Produto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APICatologo.Controllers.ProdutosController",
-    "Method": "Delete",
-    "RelativePath": "Produtos/{Id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APICatologo.Controllers.ProdutosController",
-    "Method": "GetPrimeiro",
-    "RelativePath": "Produtos/{name}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "name",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "APICatologo.Models.Produto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
   }
 ]

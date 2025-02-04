@@ -1,11 +1,15 @@
 using APICatologo.Data;
+using APICatologo.DTOs.Mappins;
 using APICatologo.Extensions;
 using APICatologo.Filter;
+using APICatologo.Interfaces;
 using APICatologo.Logging;
 using APICatologo.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,12 +19,19 @@ string Conexao = builder.Configuration.GetConnectionString("DefaultConnection");
 var Valor1 = builder.Configuration["chave1"];
 var Valor2 = builder.Configuration["chave2"];
 builder.Services.AddDbContext<AppDbContext>(options =>  options.UseSqlServer(Conexao));
-builder.Services.AddControllers(options => { options.Filters.Add(typeof(ApiExeceptionFilter)); }).AddJsonOptions(options=> options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+builder.Services.AddControllers(options => { options.Filters.Add(typeof(ApiExeceptionFilter)); }).AddJsonOptions(options=> options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles).AddNewtonsoftJson();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddTransient<IMeuServoco, MeuServico>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ApiLogginFilter>();
+builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+builder.Services.AddScoped<IProdutosRepository, ProdutosRepository>();
+builder.Services.AddScoped(typeof( IRepository<>), typeof( Repository<>));
+builder.Services.AddAutoMapper(typeof(ProdutoDTOMappingProfile));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+
 // função para desabilitar o [FromServices]
 builder.Services.Configure<ApiBehaviorOptions>(options => options.DisableImplicitFromServicesParameters = true);
 builder.Logging.AddProvider(new CustummerLoggerProvider(new CustummerLoggerProviderConfiguration() { LogLevel = LogLevel.Information }));

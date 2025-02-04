@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace APICatologo.Models;
 // com a nova função NET 6 ponto e virgula substitui as chaves do addscopeds
@@ -19,7 +20,7 @@ public class Categoria
     [StringLength(80)]
     [Required]
     public string? ImagemUrl { get; set; }
-
+    [JsonIgnore]
     public IEnumerable<Produto> Produtos { get; set; }
 
     
