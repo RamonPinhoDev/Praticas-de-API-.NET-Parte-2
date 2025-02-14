@@ -16,5 +16,7 @@ Este repositório faz parte da trilha de aprendizado do curso **ASP.NET Core Web
 - **DTO**
 - **Auto Mapper**
 - **HttpPatch**
+- **Paginação**
+- **Paginação com filtro**
 
 Este repositório serve como referência para os exemplos e exercícios realizados durante o curso.
