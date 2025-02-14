@@ -2,7 +2,10 @@
 
 using APICatologo.Data;
 using APICatologo.Models;
+using APICatologo.Pagination;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace APICatologo.Interfaces
@@ -16,7 +19,27 @@ namespace APICatologo.Interfaces
             
         }
 
-        
+        public PagedList<Categoria> GetCategorias(CategoriaParametrs paramters)
+        {
+            var categorias = GetAll().OrderBy(c=> c.CategoriaId).AsQueryable();
+          var catPaginada =  PagedList<Categoria>.ToPagedList(categorias, paramters.PageNumber, paramters.PageSize);
+            return catPaginada;
+        }
+
+        public PagedList<Categoria> GetCategoriasFiltroNome(CategoriaFiltroNome paramters)
+        {
+            var categorias = GetAll().AsQueryable();
+            if (!string.IsNullOrEmpty(paramters.Nome))
+            {
+
+                categorias = categorias.Where(c=> c.Nome.Contains(paramters.Nome));
+            }
+
+            var categoriasFiltradas = PagedList<Categoria>.ToPagedList(categorias, paramters.PageNumber, paramters.PageSize);
+            return categoriasFiltradas;
+        }
+
+
 
 
 

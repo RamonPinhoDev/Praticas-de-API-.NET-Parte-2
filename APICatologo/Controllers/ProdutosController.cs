@@ -3,12 +3,16 @@ using APICatologo.DTOs;
 using APICatologo.DTOs.Mappins;
 using APICatologo.Interfaces;
 using APICatologo.Models;
+using APICatologo.Pagination;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using System.Linq;
 
 namespace APICatologo.Controllers;
 
@@ -31,6 +35,38 @@ public class ProdutosController : ControllerBase
         _mapper = mapper;
     }
 
+    [HttpGet("filter/preço/pagination")]
+    public ActionResult<IEnumerable<ProdutosDTO>> GeprodutoPrecoFiltro([FromQuery] ProdutosFiltroPreco produtosFiltroPreçoParamters)
+    {var produtos = _repositoryProduto.GetProdutosFiltroPreco(produtosFiltroPreçoParamters);
+
+        var metadados = new { produtos.TotalCount,
+        produtos.PageSize,
+            produtos.CurrentPage,
+            produtos.TotalPages,
+            produtos.HasNext,
+            produtos.HasPrevious
+        };Response.Headers.Append("X-pagnation", JsonConvert.SerializeObject(metadados));
+
+        var produtosDTO = _mapper.Map<IEnumerable<ProdutosDTO>>(produtos);
+        return Ok(produtosDTO);
+    }
+    [HttpGet("Pagination")]
+    public ActionResult<IEnumerable<ProdutosDTO>> Get([FromQuery] ProdutosParametrs paramters)
+        {
+        var produtos = _uof.ProdutosRepository.GetProdutos(paramters);
+        var metaDados = new 
+        {
+            produtos.TotalCount,
+            produtos.PageSize,
+            produtos.CurrentPage,
+            produtos.TotalPages,
+            produtos.HasNext,
+            produtos.HasPrevious,
+        };
+        Response.Headers.Append("X-Pagination", JsonConvert.SerializeObject(metaDados));
+        var ProdutosDTO = _mapper.Map<IEnumerable<ProdutosDTO>>(produtos);
+        return Ok(ProdutosDTO);
+        }
 
     [HttpGet("GetCategorias/{id:int}", Name = "produtosId")]
     public ActionResult<IEnumerable<ProdutosDTO>> GetProdutos(int id)
