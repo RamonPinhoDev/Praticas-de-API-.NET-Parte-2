@@ -18,5 +18,6 @@ Este repositório faz parte da trilha de aprendizado do curso **ASP.NET Core Web
 - **HttpPatch**
 - **Paginação**
 - **Paginação com filtro**
+- **PProgramação assicrona**
 
 Este repositório serve como referência para os exemplos e exercícios realizados durante o curso.
