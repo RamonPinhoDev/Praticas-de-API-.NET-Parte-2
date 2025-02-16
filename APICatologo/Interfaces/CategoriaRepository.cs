@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Linq;
 using System.Linq.Expressions;
 
+
 namespace APICatologo.Interfaces
 {
     public class CategoriaRepository : Repository<Categoria>, ICategoriaRepository
@@ -19,23 +20,28 @@ namespace APICatologo.Interfaces
             
         }
 
-        public PagedList<Categoria> GetCategorias(CategoriaParametrs paramters)
+        public async Task< PagedList<Categoria> >GetCategoriasAsync(CategoriaParametrs paramters)
         {
-            var categorias = GetAll().OrderBy(c=> c.CategoriaId).AsQueryable();
-          var catPaginada =  PagedList<Categoria>.ToPagedList(categorias, paramters.PageNumber, paramters.PageSize);
+            var categorias = await GetAllAsync();
+
+            var categoriasOrdenadas = categorias.OrderBy(c => c.CategoriaId).AsQueryable();
+
+            var catPaginada =  PagedList<Categoria>.ToPagedList(categoriasOrdenadas, paramters.PageNumber, paramters.PageSize);
+
             return catPaginada;
         }
 
-        public PagedList<Categoria> GetCategoriasFiltroNome(CategoriaFiltroNome paramters)
+        public async Task<PagedList<Categoria> >GetCategoriasFiltroNomeAsync(CategoriaFiltroNome paramters)
         {
-            var categorias = GetAll().AsQueryable();
+            var categorias = await  GetAllAsync();
+            //var cat = categorias.AsQueryable();
             if (!string.IsNullOrEmpty(paramters.Nome))
             {
 
                 categorias = categorias.Where(c=> c.Nome.Contains(paramters.Nome));
             }
 
-            var categoriasFiltradas = PagedList<Categoria>.ToPagedList(categorias, paramters.PageNumber, paramters.PageSize);
+            var categoriasFiltradas = PagedList<Categoria>.ToPagedList(categorias.AsQueryable(), paramters.PageNumber, paramters.PageSize);
             return categoriasFiltradas;
         }
 

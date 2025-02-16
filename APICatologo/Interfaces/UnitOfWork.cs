@@ -31,8 +31,8 @@ namespace APICatologo.Interfaces
         {
             get { return _categoriaRepo = _categoriaRepo ?? new CategoriaRepository(_context); }
         }
-        public void Commit()
-        { _context.SaveChanges(); }
+        public async Task CommitAsync()
+        { await _context.SaveChangesAsync(); }
 
 
         public void Dispose() { _context.Dispose(); }

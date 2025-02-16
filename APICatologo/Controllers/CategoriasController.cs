@@ -25,9 +25,9 @@ namespace APICatologo.Controllers
         }
 
         [HttpGet("pagination/filtro/nome")]
-        public ActionResult<IEnumerable<CategoriasDTO>> GetCatFiltrado([FromQuery] CategoriaFiltroNome categoriaFiltroNome)
+        public async Task< ActionResult<IEnumerable<CategoriasDTO>>> GetCatFiltrado([FromQuery] CategoriaFiltroNome categoriaFiltroNome)
         {
-            var categ = _uof.CategoriaRepository.GetCategoriasFiltroNome(categoriaFiltroNome);
+            var categ = await _uof.CategoriaRepository.GetCategoriasFiltroNomeAsync(categoriaFiltroNome);
 
             var metda = new
             {
@@ -48,9 +48,9 @@ namespace APICatologo.Controllers
             // return GetParamters(categ);
         }
         [HttpGet("Pagination")]
-        public ActionResult<IEnumerable<CategoriasDTO>> GetParamters([FromQuery] CategoriaParametrs cat)
+        public async Task<ActionResult<IEnumerable<CategoriasDTO>> >GetParamters([FromQuery] CategoriaParametrs cat)
         {
-            var categ = _uof.CategoriaRepository.GetCategorias(cat);
+            var categ = await _uof.CategoriaRepository.GetCategoriasAsync(cat);
 
             var metda = new
             {
@@ -72,10 +72,10 @@ namespace APICatologo.Controllers
 
 
         [HttpGet]
-        public ActionResult<IEnumerable<CategoriasDTO>> Get()
+        public async Task<ActionResult<IEnumerable<CategoriasDTO>>> Get()
         {
 
-            var cat = _uof.CategoriaRepository.GetAll();
+            var cat = await _uof.CategoriaRepository.GetAllAsync(); 
 
             var catDTO = cat.TocategoriaDtoList();
 
@@ -87,10 +87,10 @@ namespace APICatologo.Controllers
         }
 
         [HttpGet("{id:int}", Name = "ObterRota")]
-        public IActionResult Get2(int id)
+        public async Task<IActionResult >Get2(int id)
         {
 
-            var cat = _uof.CategoriaRepository.Get(c => c.CategoriaId == id);
+            var cat = await _uof.CategoriaRepository.GetAsync(c => c.CategoriaId == id);
 
             var catDTO = cat.ToCategoriaDto();
 
@@ -99,24 +99,24 @@ namespace APICatologo.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public ActionResult<CategoriasDTO> Put(int id, CategoriasDTO categoriasDTO)
+        public async Task<ActionResult<CategoriasDTO>> Put(int id, CategoriasDTO categoriasDTO)
         {
             var catego = categoriasDTO.ToCategoria();
 
 
             var cate = _uof.CategoriaRepository.Update(catego);
-            _uof.Commit();
+            _uof.CommitAsync();
             var categs = cate.ToCategoriaDto();
             return Ok(cate);
         }
 
         [HttpPost]
-        public ActionResult<CategoriasDTO> Post(CategoriasDTO categoriasDTO)
+        public async Task<ActionResult<CategoriasDTO> >Post(CategoriasDTO categoriasDTO)
         {
 
             var categoria = categoriasDTO.ToCategoria();
             _uof.CategoriaRepository.Create(categoria);
-            _uof.Commit();
+            _uof.CommitAsync();
 
             return new CreatedAtRouteResult("ObterRota", new { Id = categoriasDTO.CategoriaId }, categoriasDTO);
 
@@ -124,12 +124,12 @@ namespace APICatologo.Controllers
 
 
         [HttpDelete("{id:int}")]
-        public ActionResult<CategoriasDTO> Delete(int id)
+        public async Task<ActionResult<CategoriasDTO>> Delete(int id)
         {
-            var categoria = _uof.CategoriaRepository.Get(c => c.CategoriaId == id);
+            var categoria = await _uof.CategoriaRepository.GetAsync(c => c.CategoriaId == id);
             _uof.CategoriaRepository.Delete(categoria);
 
-            _uof.Commit();
+            _uof.CommitAsync();
             var categoriasDTO = categoria.ToCategoriaDto();
             return Ok(categoriasDTO);
 

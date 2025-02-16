@@ -152,3 +152,5 @@ C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\bin\Debug\net8.0\Micros
 C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\bin\Debug\net8.0\X.PagedList.dll
+C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
