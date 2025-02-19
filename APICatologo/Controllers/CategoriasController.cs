@@ -6,6 +6,7 @@ using APICatologo.Interfaces;
 using APICatologo.Models;
 using APICatologo.Pagination;
 using APICatologo.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -23,8 +24,9 @@ namespace APICatologo.Controllers
         {
             _uof = uof;
         }
-
+        [Authorize]
         [HttpGet("pagination/filtro/nome")]
+      
         public async Task< ActionResult<IEnumerable<CategoriasDTO>>> GetCatFiltrado([FromQuery] CategoriaFiltroNome categoriaFiltroNome)
         {
             var categ = await _uof.CategoriaRepository.GetCategoriasFiltroNomeAsync(categoriaFiltroNome);

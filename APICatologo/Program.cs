@@ -5,8 +5,13 @@ using APICatologo.Filter;
 using APICatologo.Interfaces;
 using APICatologo.Logging;
 using APICatologo.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using System.Text.Json.Serialization;
 
 
@@ -30,6 +35,26 @@ builder.Services.AddScoped<IProdutosRepository, ProdutosRepository>();
 builder.Services.AddScoped(typeof( IRepository<>), typeof( Repository<>));
 builder.Services.AddAutoMapper(typeof(ProdutoDTOMappingProfile));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+//adicionando JWT
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication("Bearer").AddJwtBearer();
+//Configurando JWT
+var secretkey = builder.Configuration["JWT:Secretkey"] ?? throw new ArgumentException("Inavalid secret key");
+builder.Services.AddAuthentication(options => { options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options => { options.SaveToken = true; options.RequireHttpsMetadata = false; options.TokenValidationParameters = new
+    TokenValidationParameters()
+{ ValidateIssuer = true,
+ValidateAudience = true,
+ValidateLifetime = true,
+ValidateIssuerSigningKey = true,
+ClockSkew = TimeSpan.Zero,
+ValidAudience = builder.Configuration["JWT:ValidAudience"],
+ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
+IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretkey)),
+};
+});
 
 
 // função para desabilitar o [FromServices]

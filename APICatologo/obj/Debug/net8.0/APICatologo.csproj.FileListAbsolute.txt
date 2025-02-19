@@ -141,7 +141,6 @@ C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\obj\Debug\net8.0\static
 C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.APICatologo.props
 C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.APICatologo.props
 C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\obj\Debug\net8.0\APICatol.C4830D55.Up2Date
 C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\obj\Debug\net8.0\APICatologo.dll
 C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\obj\Debug\net8.0\refint\APICatologo.dll
@@ -154,3 +153,6 @@ C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\bin\Debug\net8.0\Newton
 C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
 C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\bin\Debug\net8.0\X.PagedList.dll
 C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
+C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Ideapad 3i\source\repos\APICatologo\APICatologo\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
