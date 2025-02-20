@@ -31,7 +31,7 @@ namespace APICatologo.Logging
         }
         private void EscreverTextoNoArtigo(string mensagem)
         {
-            string CaminhoArquivoLog = @"C:\Users\Ideapad 3i\Documents\Udemy\Projetos C# O\ASPNETcore\Api\70\Aula70.txt";
+            string CaminhoArquivoLog = @"D:\Udemy\Projetos C# O\ASPNETcore\API\70\Aula70.txt";
 
             using (StreamWriter stream = new StreamWriter(CaminhoArquivoLog, true))
             {

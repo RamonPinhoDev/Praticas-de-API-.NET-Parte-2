@@ -4,6 +4,7 @@ using APICatologo.Extensions;
 using APICatologo.Filter;
 using APICatologo.Interfaces;
 using APICatologo.Logging;
+using APICatologo.Models;
 using APICatologo.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -35,7 +36,7 @@ builder.Services.AddScoped<IProdutosRepository, ProdutosRepository>();
 builder.Services.AddScoped(typeof( IRepository<>), typeof( Repository<>));
 builder.Services.AddAutoMapper(typeof(ProdutoDTOMappingProfile));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 //adicionando JWT
 builder.Services.AddAuthorization();
 builder.Services.AddAuthentication("Bearer").AddJwtBearer();
@@ -56,6 +57,7 @@ IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretkey)),
 };
 });
 
+builder.Services.AddScoped<ITokenServices, TokenServices>();
 
 // função para desabilitar o [FromServices]
 builder.Services.Configure<ApiBehaviorOptions>(options => options.DisableImplicitFromServicesParameters = true);
