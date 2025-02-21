@@ -44,9 +44,29 @@ namespace APICatologo.Interfaces
             return refreshToken;
         }
 
-        public ClaimsPrincinpal GetPrincinpalFromExpiredToken(string token, IConfiguration _config)
+        public ClaimsPrincipal GetPrincinpalFromExpiredToken(string token, IConfiguration _config)
         {
-            var secretykey = _config["JTW:Securytikey"]??
+            var secretykey = _config["JTW:Securytikey"] ?? throw new InvalidOperationException("Invalid key");
+            var tokenValidationParamters = new TokenValidationParameters
+            {
+                ValidateAudience = false,
+                ValidateIssuer = false,
+                ValidateIssuerSigningKey = false,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretykey)),
+                ValidateLifetime = false,
+
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var princinpal = tokenHandler.ValidateToken(token, tokenValidationParamters, out SecurityToken securityToken);
+
+            if (securityToken is not JwtSecurityToken jwtSecurityToken || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms
+                .HmacSha256, StringComparison.InvariantCultureIgnoreCase) )
+                {
+
+                throw new SecurityTokenException("Invalid Key");
+            }
+            return princinpal;
         }
     }
 }

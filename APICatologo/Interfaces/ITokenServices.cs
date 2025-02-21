@@ -8,6 +8,6 @@ namespace APICatologo.Interfaces
         JwtSecurityToken GenerateAcessToken(IEnumerable<Claim> claims, IConfiguration _config);
         string GenerateRefreshToken();
 
-        ClaimsPrincinpal GetPrincinpalFromExpiredToken(string token, IConfiguration _config);
+        ClaimsPrincipal GetPrincinpalFromExpiredToken(string token, IConfiguration _config);
     }
 }
