@@ -6,7 +6,7 @@ namespace APICatologo.Interfaces
     public interface ITokenServices
     {
         JwtSecurityToken GenerateAcessToken(IEnumerable<Claim> claims, IConfiguration _config);
-        string GenerateAcessToken();
+        string GenerateRefreshToken();
 
         ClaimsPrincinpal GetPrincinpalFromExpiredToken(string token, IConfiguration _config);
     }
