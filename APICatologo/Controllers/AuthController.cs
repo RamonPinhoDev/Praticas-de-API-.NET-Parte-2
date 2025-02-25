@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 
 namespace APICatologo.Controllers
 {
@@ -95,14 +97,53 @@ namespace APICatologo.Controllers
 
             };
              
-            var result =await _userManager.CreateAsync(user, model.Password);
+            var result =await _userManager.CreateAsync(user, model.Password!);
 
             if (!result.Succeeded) {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exist!" });
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Create User  fail!" });
 
 
             }
             return Ok(new Response {Status =" Secelly", Message="User Created succefully" });
+        }
+
+        [HttpPost]
+        [Route("RefreshToken")]
+
+        public async Task<IActionResult> RefreshToken([FromBody] TokenModel model)
+        {
+            if (model == null) { return BadRequest("Invalid Cliente request"); }
+
+            string? acessToken = model.AcessToken ?? throw new ArgumentNullException(nameof(model));
+            string ? refreshToken = model.RefreshToken ?? throw new ArgumentNullException( nameof(model));
+
+            var princinpal = _tokenServices.GetPrincinpalFromExpiredToken(acessToken!, _configuration);
+            if (princinpal == null) {
+                return BadRequest("Acess token invalid/ refresh token");
+            
+            }
+
+            string userName = princinpal.Identity.Name;
+            var user = await _userManager.FindByNameAsync(userName);
+            if (user == null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.Now) 
+            {
+                return BadRequest("Invalid acess token/ refresk token");
+            
+            }
+
+            var newAessToken = _tokenServices.GenerateAcessToken(princinpal.Claims.ToList(), _configuration);
+
+            var newRefreshtoken = _tokenServices.GenerateRefreshToken();
+
+            user.RefreshToken = newRefreshtoken;
+            await _userManager.UpdateAsync(user);
+
+            return new ObjectResult(new
+            {
+
+                acessToken = new JwtSecurityTokenHandler().WriteToken(newAessToken),
+                refreshToken = newRefreshtoken,
+            } );
         }
 
     }
