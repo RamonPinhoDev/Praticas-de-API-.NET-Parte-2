@@ -2,7 +2,7 @@
 
 namespace APICatologo.DTOs
 {
-    public class ReisterModel
+    public class RegisterModel
     {
 
         [Required(ErrorMessage = "Username is required")]

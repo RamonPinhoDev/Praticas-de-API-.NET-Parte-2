@@ -39,22 +39,27 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 //adicionando JWT
 builder.Services.AddAuthorization();
-builder.Services.AddAuthentication("Bearer").AddJwtBearer();
+//builder.Services.AddAuthentication("Bearer").AddJwtBearer();
 //Configurando JWT
 var secretkey = builder.Configuration["JWT:Secretkey"] ?? throw new ArgumentException("Inavalid secret key");
-builder.Services.AddAuthentication(options => { options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options => { options.SaveToken = true; options.RequireHttpsMetadata = false; options.TokenValidationParameters = new
+}).AddJwtBearer(options =>
+{
+    options.SaveToken = true; options.RequireHttpsMetadata = false; options.TokenValidationParameters = new
     TokenValidationParameters()
-{ ValidateIssuer = true,
-ValidateAudience = true,
-ValidateLifetime = true,
-ValidateIssuerSigningKey = true,
-ClockSkew = TimeSpan.Zero,
-ValidAudience = builder.Configuration["JWT:ValidAudience"],
-ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
-IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretkey)),
-};
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ClockSkew = TimeSpan.Zero,
+        ValidAudience = builder.Configuration["JWT:ValidAudience"],
+        ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretkey)),
+    };
 });
 
 builder.Services.AddScoped<ITokenServices, TokenServices>();

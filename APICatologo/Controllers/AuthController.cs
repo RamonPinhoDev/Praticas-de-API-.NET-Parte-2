@@ -35,9 +35,10 @@ namespace APICatologo.Controllers
         {
             var user = await _userManager.FindByNameAsync(model.UserName!);
 
-            if (user is not null && await _userManager.CheckPasswordAsync(user, model.Password!)) {
+            if (user is not null && await _userManager.CheckPasswordAsync(user, model.Password!))
+            {
                 var userRoles = await _userManager.GetRolesAsync(user);
-                
+
                 var AuthoClaims = new List<Claim>
             {
                     new Claim(ClaimTypes.Name, user.UserName!),
@@ -48,7 +49,7 @@ namespace APICatologo.Controllers
             };
 
 
-                foreach (var userRole in userRoles) 
+                foreach (var userRole in userRoles)
                 {
                     AuthoClaims.Add(new Claim(ClaimTypes.Role, userRole));
                 }
@@ -57,7 +58,7 @@ namespace APICatologo.Controllers
                 var token = _tokenServices.GenerateAcessToken(AuthoClaims, _configuration);
                 var refreshToken = _tokenServices.GenerateRefreshToken();
 
-                _ = int.TryParse(_tokenServices["JWT: RefreshTokenValidityInMinutes"], out int RefreshTokenValidityInMinutes);
+                _ = int.TryParse(_configuration["JWT: RefreshTokenValidityInMinutes"], out int RefreshTokenValidityInMinutes);
 
                 user.RefreshToken = refreshToken;
 
@@ -65,13 +66,43 @@ namespace APICatologo.Controllers
 
                 await _userManager.UpdateAsync(user);
 
-                return Ok(new {
-                Token = new JwtSecurityTokenHandler().WriteToken(token),
-                RefreshToken = refreshToken,
-                Expiration = token.ValidTo
+                return Ok(new
+                {
+                    Token = new JwtSecurityTokenHandler().WriteToken(token),
+                    RefreshToken = refreshToken,
+                    Expiration = token.ValidTo
                 });
 
             }
+
+            return Unauthorized();
+        }
+
+        [HttpPost]
+        [Route("Register")]
+        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        {
+            var userExist = _userManager.FindByNameAsync(model.UserName!);
+            if (userExist != null) { 
+            return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status ="Error", Message = "User already exist!"});
+            
+            }
+            ApplicationUser user = new()
+            {
+                Email = model.Email,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = model.UserName
+
+            };
+             
+            var result =await _userManager.CreateAsync(user, model.Password);
+
+            if (!result.Succeeded) {
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exist!" });
+
+
+            }
+            return Ok(new Response {Status =" Secelly", Message="User Created succefully" });
         }
 
     }

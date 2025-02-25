@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "APICatologo.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "APICatologo.DTOs.LoginModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "APICatologo.Controllers.CategoriasController",
     "Method": "Get",
     "RelativePath": "Categorias",
