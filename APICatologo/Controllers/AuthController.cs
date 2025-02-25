@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace APICatologo.Controllers
@@ -110,7 +111,7 @@ namespace APICatologo.Controllers
         [HttpPost]
         [Route("RefreshToken")]
 
-        public async Task<IActionResult> RefreshToken([FromBody] TokenModel model)
+        public async Task<IActionResult> RefreshToken(TokenModel model)
         {
             if (model == null) { return BadRequest("Invalid Cliente request"); }
 
@@ -144,6 +145,19 @@ namespace APICatologo.Controllers
                 acessToken = new JwtSecurityTokenHandler().WriteToken(newAessToken),
                 refreshToken = newRefreshtoken,
             } );
+        }
+
+        [Authorize]
+        [HttpPost]
+        [Route("Revoke/{username}")]
+        public async Task<IActionResult> Revoke(string username)
+        {
+            var user = await _userManager.FindByNameAsync(username);
+            if (user == null) { return BadRequest(); }
+
+            user.RefreshToken = null;
+            await _userManager.UpdateAsync(user);
+            return NoContent();
         }
 
     }
