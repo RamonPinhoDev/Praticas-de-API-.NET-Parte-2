@@ -20,12 +20,12 @@ namespace APICatologo.Controllers
         private readonly ITokenServices _tokenServices;
         private readonly IConfiguration _configuration;
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly RoleManager<IdentityUser> _rolemanager;
+        private readonly RoleManager<IdentityRole> _rolemanager;
 
         public AuthController(ITokenServices tokenServices,
             IConfiguration configuration,
             UserManager<ApplicationUser> userManager,
-            RoleManager<IdentityUser> rolemanager)
+            RoleManager<IdentityRole> rolemanager)
         {
             _tokenServices = tokenServices;
             _configuration = configuration;
