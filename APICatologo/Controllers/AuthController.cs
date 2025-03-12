@@ -22,15 +22,19 @@ namespace APICatologo.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _rolemanager;
 
+        private readonly ILogger _logger;
+
         public AuthController(ITokenServices tokenServices,
             IConfiguration configuration,
             UserManager<ApplicationUser> userManager,
-            RoleManager<IdentityRole> rolemanager)
+            RoleManager<IdentityRole> rolemanager,
+            ILogger logger)
         {
             _tokenServices = tokenServices;
             _configuration = configuration;
             _userManager = userManager;
             _rolemanager = rolemanager;
+            _logger = logger;
         }
         [Route("Login")]
         [HttpPost]
@@ -80,9 +84,9 @@ namespace APICatologo.Controllers
 
             return Unauthorized();
         }
-
-        [HttpPost]
         [Route("Register")]
+        [HttpPost]
+        
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
             var userExist = _userManager.FindByNameAsync(model.UserName!);
@@ -107,9 +111,9 @@ namespace APICatologo.Controllers
             }
             return Ok(new Response {Status =" Secelly", Message="User Created succefully" });
         }
-
-        [HttpPost]
         [Route("RefreshToken")]
+        [HttpPost]
+        
 
         public async Task<IActionResult> RefreshToken(TokenModel model)
         {
@@ -158,6 +162,28 @@ namespace APICatologo.Controllers
             user.RefreshToken = null;
             await _userManager.UpdateAsync(user);
             return NoContent();
+        }
+
+        [HttpPost]
+        public async Task< IActionResult> CreateRole(string roleName)
+        {
+            var roleExist = await  _rolemanager.RoleExistsAsync(roleName);
+
+            if (!roleExist)
+            {
+                var roleResult = await  _rolemanager.CreateAsync(new IdentityRole(roleName));
+                if (roleResult.Succeeded)
+                {
+                    _logger.LogInformation(1, "Roles Added");
+                    return StatusCode(StatusCodes.Status200OK, new Response {Status ="Error",  Message=$"Role {roleName} added successfully"});
+                }
+                else
+                {
+                    _logger.LogInformation(2, "Error");
+                    return StatusCode(StatusCodes.Status400BadRequest, new Response {Status ="Error", Message=$"Issue adding new {roleName} role" });
+                }
+            }
+            return StatusCode(StatusCodes.Status400BadRequest, new Response { Status = "Error", Message="Role already exist."});
         }
 
     }

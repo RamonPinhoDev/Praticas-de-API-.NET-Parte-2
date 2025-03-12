@@ -1157,10 +1157,10 @@
     },
     "securitySchemes": {
       "Bearer": {
-        "type": "http",
-        "description": "Insira o token JWT no formato: Bearer {seu_token}",
-        "scheme": "Bearer",
-        "bearerFormat": "JWT"
+        "type": "apiKey",
+        "description": "Bearer JWT",
+        "name": "Authorization",
+        "in": "header"
       }
     }
   },
