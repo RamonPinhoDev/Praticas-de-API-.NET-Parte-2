@@ -56,7 +56,16 @@ builder.Services.AddAutoMapper(typeof(ProdutoDTOMappingProfile));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 //adicionando JWT
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options => { options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+options.AddPolicy("SuperAdminOnly", polyce => polyce.RequireRole("SuperAdmin").RequireClaim("id", "ramon"));
+options.AddPolicy("UserOnly", polyce => polyce.RequireRole("User"));
+
+options.AddPolicy("ExclusiveOnLy", polyce=> polyce.RequireAssertion(context=> context.User.HasClaim(claim=> claim.Type == "id"&& claim.Value =="ramon" )
+|| context.User.IsInRole("SuperAdmin")
+);
+
+
+});
 //builder.Services.AddAuthentication("Bearer").AddJwtBearer();
 //Configurando JWT
 var secretkey = builder.Configuration["JWT:Secretkey"] ?? throw new ArgumentException("Inavalid secret key");
