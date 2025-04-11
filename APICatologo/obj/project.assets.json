@@ -5963,11 +5963,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ideapad 3i\\source\\repos\\APICatologo\\APICatologo\\APICatologo.csproj",
+      "projectUniqueName": "D:\\Udemy\\Projetos C# O\\ASPNETcore\\API\\APICatologo\\APICatologo\\APICatologo.csproj",
       "projectName": "APICatologo",
-      "projectPath": "C:\\Users\\Ideapad 3i\\source\\repos\\APICatologo\\APICatologo\\APICatologo.csproj",
+      "projectPath": "D:\\Udemy\\Projetos C# O\\ASPNETcore\\API\\APICatologo\\APICatologo\\APICatologo.csproj",
       "packagesPath": "C:\\Users\\Ideapad 3i\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ideapad 3i\\source\\repos\\APICatologo\\APICatologo\\obj\\",
+      "outputPath": "D:\\Udemy\\Projetos C# O\\ASPNETcore\\API\\APICatologo\\APICatologo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

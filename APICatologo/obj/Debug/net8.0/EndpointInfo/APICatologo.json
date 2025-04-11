@@ -135,7 +135,7 @@
         }
       }
     },
-    "/api/Auth": {
+    "/api/Auth/Roles": {
       "post": {
         "tags": [
           "Auth"
@@ -143,6 +143,34 @@
         "parameters": [
           {
             "name": "roleName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/AddUserRole": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rolename",
             "in": "query",
             "schema": {
               "type": "string"

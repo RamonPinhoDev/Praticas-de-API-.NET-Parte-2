@@ -1,14 +1,19 @@
 [
   {
     "ContainingType": "APICatologo.Controllers.AuthController",
-    "Method": "CreateRole",
-    "RelativePath": "api/Auth",
+    "Method": "AddUserRole",
+    "RelativePath": "api/Auth/AddUserRole",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "roleName",
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "rolename",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -75,6 +80,22 @@
         "Name": "username",
         "Type": "System.String",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APICatologo.Controllers.AuthController",
+    "Method": "CreateRole",
+    "RelativePath": "api/Auth/Roles",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "roleName",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

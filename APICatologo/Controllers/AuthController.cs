@@ -91,7 +91,7 @@ namespace APICatologo.Controllers
         
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
-            var userExist = _userManager.FindByNameAsync(model.UserName!);
+            var userExist = await _userManager.FindByNameAsync(model.UserName!);
             if (userExist != null) { 
             return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status ="Error", Message = "User already exist!"});
             
@@ -104,7 +104,7 @@ namespace APICatologo.Controllers
 
             };
              
-            var result =await _userManager.CreateAsync(user, model.Password!);
+            var result = await _userManager.CreateAsync(user, model.Password!);
 
             if (!result.Succeeded) {
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Create User  fail!" });

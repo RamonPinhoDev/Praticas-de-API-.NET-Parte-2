@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Lq/jewpRG0c=",
+  "dgSpecHash": "pCfCdamQqVY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ideapad 3i\\source\\repos\\APICatologo\\APICatologo\\APICatologo.csproj",
+  "projectFilePath": "D:\\Udemy\\Projetos C# O\\ASPNETcore\\API\\APICatologo\\APICatologo\\APICatologo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ideapad 3i\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Ideapad 3i\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
