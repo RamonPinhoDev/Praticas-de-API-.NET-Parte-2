@@ -25,7 +25,10 @@ string Conexao = builder.Configuration.GetConnectionString("DefaultConnection");
 var OrigemComacessoPeritido = "_origemComAcessoPermitido";
 var Valor1 = builder.Configuration["chave1"];
 var Valor2 = builder.Configuration["chave2"];
-builder.Services.AddCors(options => options.AddPolicy( name: OrigemComacessoPeritido, policy=> { policy.WithOrigins("http://www.apirequest.io"); } ));
+builder.Services.AddCors(options => options./*AddPolicy*/ AddDefaultPolicy( /*name: OrigemComacessoPeritido, */policy=> { policy.WithOrigins("http://www.apirequest.io", "http://www.apirequest.io")
+    .WithMethods("GET", "POST").AllowAnyHeader().AllowCredentials(); } ));
+
+
 builder.Services.AddDbContext<AppDbContext>(options =>  options.UseSqlServer(Conexao));
 builder.Services.AddControllers(options => { options.Filters.Add(typeof(ApiExeceptionFilter)); }).AddJsonOptions(options=> options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles).AddNewtonsoftJson();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -110,7 +113,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseCors(OrigemComacessoPeritido);
+app.UseCors(/*OrigemComacessoPeritido*/);
 app.MapControllers();
 app.Use(async (context,next) =>
 {
